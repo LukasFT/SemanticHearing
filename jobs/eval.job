@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+cd "$SLURM_SUBMIT_DIR"
+
+module load Anaconda3
+
+# call Setup.sh
+source jobs/setup.sh
+
+python -m src.training.eval experiments/dc_waveformer --use_cuda
