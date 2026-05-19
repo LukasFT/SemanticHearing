@@ -8,8 +8,7 @@ conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 if [ -d "env" ]; then
   echo "Dir env exists, skipping setup"
 else
-  conda update -n base -c defaults conda -y
-  conda install -n base -c defaults setuptools --force-reinstall -y
+  conda clean --packages --tarballs --index-cache -y
   conda create -y --prefix ./env python=3.8
 fi
 
