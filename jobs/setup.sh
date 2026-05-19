@@ -4,6 +4,13 @@
 conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
 conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 
-conda create --name semhear python=3.8
-conda activate semhear
+# ensure conda tos already accepted before this
+if conda env list | awk '{print $1}' | grep -Fxq semhear; then
+  echo "Environment 'semhear' exists, skipping creation"
+else
+  conda create -y --prefix ./env --name semhear python=3.8
+fi
+
+source "$(conda info --base)/etc/profile.d/conda.sh"
+conda activate ./env
 pip install -r requirements.txt
