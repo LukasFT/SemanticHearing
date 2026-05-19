@@ -5,8 +5,8 @@ conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/ma
 conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 
 # ensure conda tos already accepted before this
-if conda env list | grep -q "env"; then
-  echo "Environment 'semhear' exists, skipping creation"
+if [ -d "env" ]; then
+  echo "Dir env exists, skipping setup"
 else
   conda update -n base -c defaults conda -y
   conda install -n base -c defaults setuptools --force-reinstall -y
