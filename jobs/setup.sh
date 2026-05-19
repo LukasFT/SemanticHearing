@@ -8,7 +8,7 @@ conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 if conda env list | awk '{print $1}' | grep -Fxq semhear; then
   echo "Environment 'semhear' exists, skipping creation"
 else
-  conda create -y --prefix ./env --name semhear python=3.8
+  conda create -y --prefix ./env python=3.8
 fi
 
 source "$(conda info --base)/etc/profile.d/conda.sh"
